@@ -4,7 +4,7 @@
 // File name: projects/12/Math.jack
 /**
  *  A library of commonly used mathematical functions.
- *  All functions runs in O(n), where n is the number of bits used
+ *  All functions run in O(n), where n is the number of bits used
  *  for representing a two's complement integer value (16 in the Hack computer). 
  *  Note: Jack compilers implement multiplication and division
  *  using calls to OS functions in this class.

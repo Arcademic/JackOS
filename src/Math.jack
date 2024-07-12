@@ -10,13 +10,11 @@
  *  using calls to OS functions in this class.
  */
 class Math {
-    static int n;             // Number of bits used for representing a two's complement integer
     static Array powersOfTwo; // Stores 2^0, 2^1, 2^2,..., 2^(n-1)
 
     // Initializes the Math library.
     function void init() {
-        let n = 16;
-        let powersOfTwo = Array.new(n-1);
+        let powersOfTwo = Array.new(16);
         let powersOfTwo[0] = 1;
         let powersOfTwo[1] = 2;
         let powersOfTwo[2] = 4;
@@ -49,7 +47,7 @@ class Math {
         let sum = 0;
         let shiftedX = x;
         let i = 0;
-        while (i < n) {
+        while (i < 16) {
             if (y & powersOfTwo[i]) {
                 let sum = sum + shiftedX;
             }
@@ -84,17 +82,35 @@ class Math {
 
     /** Returns the integer part of the square root of x. */
     function int sqrt(int x) {
-        return -1;
+        var int y, i, a, a2;
+
+        let y = 0;
+        let i = 7;
+        while (~(i < 0)) {
+            let a = y + powersOfTwo[i];
+            let a2 = a*a;
+            if (~(a2 > x) & (a2 > 0)) {
+                let y = a;
+            }
+            let i = i - 1;
+        }
+        return y;
     }
 
     /** Returns the greater value. */
     function int max(int a, int b) {
-        return -1;
+        if (a > b) {
+            return a;
+        }
+        return b;
     }
 
     /** Returns the smaller value. */
     function int min(int a, int b) {
-        return -1;
+        if (a < b) {
+            return a;
+        }
+        return b;
     }
 
     /** Returns the absolute value of x. */
@@ -103,22 +119,6 @@ class Math {
             return -x;
         }
         return x;
-    }
-
-    // HELPER FUNCTIONS
-
-    function int shiftRight(int x) {
-        var ind shiftedX;
-        var int i;
-
-        let shiftedX = 0;
-        let i = 0;
-        while (i < n-1) {
-            let shiftedX = shiftedX | (x & powersOfTwo[i+1]);
-            let i = i + 1;
-        }
-
-        return shiftedX;
     }
 
 }

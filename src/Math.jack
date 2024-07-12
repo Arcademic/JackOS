@@ -50,7 +50,7 @@ class Math {
         let shiftedX = x;
         let i = 0;
         while (i < n) {
-            if ((y & powersOfTwo[i]) = powersOfTwo[i]) {
+            if (y & powersOfTwo[i]) {
                 let sum = sum + shiftedX;
             }
             let shiftedX = shiftedX + shiftedX;
@@ -64,8 +64,22 @@ class Math {
      *  an an expression, it handles it by invoking this method.
      *  Thus, x/y and Math.divide(x,y) return the same value. */
     function int divide(int x, int y) {
-
-        return -1;
+        var int q;
+        
+        if ((x<0 & y>0) | (x>0 & y<0)) {
+            return -Math.divide(Math.abs(x), Math.abs(y));
+        }
+        
+        if (y>x | y<0) {
+            return 0;
+        }
+        
+        let q = Math.divide(x, y+y);
+        if ((x - ((q*y) + (q*y))) < y) {
+            return q+q;
+        } else {
+            return (q+q) + 1;
+        }
     }
 
     /** Returns the integer part of the square root of x. */
@@ -85,7 +99,10 @@ class Math {
 
     /** Returns the absolute value of x. */
     function int abs(int x) {
-        return -1;
+        if (x < 0) {
+            return -x;
+        }
+        return x;
     }
 
     // HELPER FUNCTIONS

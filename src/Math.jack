@@ -15,6 +15,26 @@ class Math {
 
     // Initializes the Math library.
     function void init() {
+        let n = 16;
+        let powersOfTwo = Array.new(n-1);
+        let powersOfTwo[0] = 1;
+        let powersOfTwo[1] = 2;
+        let powersOfTwo[2] = 4;
+        let powersOfTwo[3] = 8;
+        let powersOfTwo[4] = 16;
+        let powersOfTwo[5] = 32;
+        let powersOfTwo[6] = 64;
+        let powersOfTwo[7] = 128;
+        let powersOfTwo[8] = 256;
+        let powersOfTwo[9] = 512;
+        let powersOfTwo[10] = 1024;
+        let powersOfTwo[11] = 2048;
+        let powersOfTwo[12] = 4096;
+        let powersOfTwo[13] = 8192;
+        let powersOfTwo[14] = 16384;
+        let powersOfTwo[15] = ~32767;
+
+        return;
     }
 
     /** Returns the product of x and y. 
@@ -22,6 +42,21 @@ class Math {
      *  in an expression, it handles it by invoking this method. 
      *  Thus, in Jack, x * y and Math.multiply(x,y) return the same value. */
     function int multiply(int x, int y) {
+        var int sum;
+        var int shiftedX;
+        var int i;
+
+        let sum = 0;
+        let shiftedX = x;
+        let i = 0;
+        while (i < n) {
+            if ((y & powersOfTwo[i]) = powersOfTwo[i]) {
+                let sum = sum + shiftedX;
+            }
+            let shiftedX = shiftedX + shiftedX;
+            let i = i + 1;
+        }
+        return sum;
     }
 
     /** Returns the integer part of x / y.
@@ -29,21 +64,44 @@ class Math {
      *  an an expression, it handles it by invoking this method.
      *  Thus, x/y and Math.divide(x,y) return the same value. */
     function int divide(int x, int y) {
+
+        return -1;
     }
 
     /** Returns the integer part of the square root of x. */
     function int sqrt(int x) {
+        return -1;
     }
 
     /** Returns the greater value. */
     function int max(int a, int b) {
+        return -1;
     }
 
     /** Returns the smaller value. */
     function int min(int a, int b) {
+        return -1;
     }
 
     /** Returns the absolute value of x. */
     function int abs(int x) {
+        return -1;
     }
+
+    // HELPER FUNCTIONS
+
+    function int shiftRight(int x) {
+        var ind shiftedX;
+        var int i;
+
+        let shiftedX = 0;
+        let i = 0;
+        while (i < n-1) {
+            let shiftedX = shiftedX | (x & powersOfTwo[i+1]);
+            let i = i + 1;
+        }
+
+        return shiftedX;
+    }
+
 }

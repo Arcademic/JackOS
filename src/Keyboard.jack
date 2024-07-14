@@ -54,7 +54,9 @@ class Keyboard {
 
         while(~(Keyboard.keyPressed() = 0)) {}
 
-        do Output.backSpace();
+        if( ~(c = String.newLine()) & ~(c = String.backSpace()) ) {
+            do Output.backSpace();
+        }
         do Output.printChar(c);
 
         return c;

@@ -72,11 +72,54 @@ class String {
     /** Returns the integer value of this string, 
      *  until a non-digit character is detected. */
     method int intValue() {
-        return -1;
+        var int val, i, d;
+        var bool isNegative;
+
+        if (chars[i] = 45) {
+            let i = i + 1;
+            let isNegative = true;
+        }
+
+        while (i < len) {
+            let d = chars[i] - 48;
+            let val = (val*10) + d;
+            let i = i + 1;
+        }
+
+        if (isNegative) {
+            let val = -val;
+        }
+
+        return val;
     }
 
     /** Sets this string to hold a representation of the given value. */
     method void setInt(int val) {
+        let len = 0;
+        if (val < 0) {
+            do appendChar(45);
+            let val = -val;
+        }
+
+        do privateSetInt(val);
+
+        return;
+    }
+
+    method void privateSetInt(int val) {
+        var int d;
+        var char c;
+        
+        if (val < 10) {
+            do appendChar(val + 48);
+        } else {
+            let d = val / 10;
+            do privateSetInt(d);
+
+            let c = (val - (d*10)) + 48;
+            do appendChar(c);
+        }
+
         return;
     }
 

@@ -32,10 +32,11 @@ class Sys {
         var int i, j;
 
         while (i < duration) {
-            let i = i + 1;
-            while (j < duration) {
+            let j = 0;
+            while (j < 1000) {
                 let j = j + 1;
             }
+            let i = i + 1;
         }
 
         return;
